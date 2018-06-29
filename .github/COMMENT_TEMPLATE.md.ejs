@@ -1,0 +1,15 @@
+---
+when:
+  - type:
+      $in:
+        - issue
+        - merge_request
+---
+
+Hi <%= op.username %>,
+
+Thanks for submitting this <%= type === "issue" ? "issue" : "merge request" %>.
+
+<% if(type === "merge_request")  { %>
+  [Docs](http://example.readthedocs.org/en/<%- merge_request.source_branch %>/)
+<% } %>
