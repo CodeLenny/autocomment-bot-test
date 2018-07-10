@@ -1,15 +1,15 @@
 ---
 when:
-  - type:
-      $in:
-        - issue
-        - merge_request
+  event:
+    $in:
+      - issues
+      - pull_requests
 ---
 
-Hi <%= op.username %>,
+Hi <%= payload.issue.user.login %>,
 
-Thanks for submitting this <%= type === "issue" ? "issue" : "merge request" %>.
+Thanks for submitting this <%= event === "issues" ? "issue" : "merge request" %>.
 
-<% if(type === "merge_request")  { %>
+<% if(event === "merge_requests")  { %>
   [Docs](http://example.readthedocs.org/en/<%- merge_request.source_branch %>/)
 <% } %>
